@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans';
+    font-style: normal;
+}
+
+body{
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100%;
+
+    background: #F8F8F8;
+}
+.sidebar__container{
+    padding: 14px 28px 0 28px;
+}
+.account{
+    display: flex;
+    align-items: center;
+}
+.account__emoji{
+    padding: 0 12px 0 0;
+}
+.account__label{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+
+    color: #5A6474;
+}
+.workspace{
+    padding: 38px 0 0 0;
+}
+.workspace__label{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #757D8A;
+
+    padding: 0 0 14px 0;
+}
+.item-workspace{
+    margin: 12px 0 0 0;
+}
+.item-workspace_active{
+    background: #FFFFFF;
+    border: 1px solid #E1E3E6;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.item-workspace__cover{
+    display: flex;
+    align-items: center;
+
+    padding: 8px 16px;
+}
+.item-workspace__emoji{
+    padding: 0 8px 0 0;
+}
+.item-workspace__label{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: #757D8A;
+}
+
+/* END SIDEBAR */
+
+/* CONTENT */
+/* HEADER */
+
+.title{
+    display: flex;
+    align-items: center;
+}
+.title__emoji{
+    margin: 0 10px 0 0;
+}
+.title__text{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+
+    color: #404D61;
+}
+.subtitle{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: #757D8A;
+
+    padding: 20px 0 0 0;
+}
+
+/* END HEADER */
+
+.content{
+    margin: 102px 0 0 348px;
+}
+.login,
+.register
+{
+    display: flex;
+    align-items: center;
+}
+.login{
+    margin: 18px 0 0 0;
+}
+.register{
+    margin: 28px 0 0 0;
+}
+.welcome-page__emoji{
+    padding: 0 10px 0 0;
+}
+.welcome-page__text{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #4E73F8;
+}
+.register__link,
+.login__link
+{
+    cursor: pointer;
+}
+.register__link{
+    color: #07A287;
+}
+.login__link{
+    color: #FFA11D;
+}
+
+/* MODALS WINDOWS */
+
+.hystmodal__styled{
+    padding: 56px 24px 27px 24px;
+}
+.modal__close{
+    position: absolute;
+    z-index: 10;
+    top: 6px;
+    right: 12px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    font-size: 0;
+    cursor: pointer;
+    outline: none;
+}
+.hystmodal__window{
+    border: 1px solid #E1E3E6;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.loginblock__buttons{
+    display: flex;
+    align-items: center;
+}
+.button-to-login,
+.button-to-registration
+{
+    padding: 10px;
+
+    box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
+    border-radius: 8px;
+    border: none;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    cursor: pointer;
+}
+.button-to-login{
+    background: rgba(117, 125, 138, 0.08);
+    color: #757D8A;
+    margin: 0 10px 0 0;
+}
+.button-to-registration{
+    background: rgba(255, 161, 29, 0.08);
+    color: #FFA11D;
+}
+.loginblock__h1{
+    margin: 36px 0 15px 0;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+
+    color: #404D61;
+}
+.formitem__text{
+    margin: 15px 0 10px 0;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #757D8A;
+}
+.formitem input{
+    width: 100%;
+    height: 26px;
+    padding: 0 0 0 5px;
+
+    border-width: 0 0 0 2px;
+    border-color: #4E73F8;;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #404D61;
+}
+.formitem input:focus-visible{
+    outline: none;
+}
+.formitem input::placeholder{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: rgba(117, 125, 138, 0.4);
+}
+.formsubmit{
+    margin: 36px 0 0 0;
+}
+.formsubmit button{
+    width: 100%;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    color: #07A287;
+    padding: 10px 0;
+
+    background: rgba(7, 162, 135, 0.08);
+    box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
+    border-radius: 8px;
+    border: none;
+
+    cursor: pointer;
+}
+.flexi {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.loginblock__bottom{
+    justify-content: space-between;
+
+    margin: 12px 0 0 0;
+}
+.formcheckbox{
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.formcheckbox input{
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.formcheckbox:focus-within{
+    outline: 2px dotted #afb3b9;
+    outline-offset:2px;
+}
+.formcheckbox input+span{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757D8A;
+
+    position: relative;
+    align-items: center;
+    user-select: none;
+}
+.formcheckbox input:checked + span{
+    color: #2E3C56;
+}
+.checkplace{
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #DDE0E6;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    margin-right: 1rem;
+}
+.checkplace img{
+    display: block;
+    max-width: 90%;
+    max-height: 95%;
+    margin: auto;
+    opacity: 0;
+}
+.formcheckbox input:checked + span .checkplace{
+    border-color:#9d9fa3;
+}
+.formcheckbox input:checked + span .checkplace img{
+    opacity: 1;
+}
+.loginblock__link{
+    display: block;
+    cursor: pointer;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757D8A;
+}
+.formsubmit .button{
+    width: 100%;
+    height: 56px;
+    font-weight: 500;
+}
+.reset-h1{
+    margin: 0 0 28px 0;
+}
+.formtext{
+    margin: 36px 0 140px 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #757D8A;
+}
+
+
+/* END MODALS WINDOWS */
+
+/* END CONTENT */
+
+
