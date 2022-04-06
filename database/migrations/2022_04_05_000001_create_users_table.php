@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+
+            $table->bigInteger('emoji_id')->unsigned()->nullable();
+            $table->foreign('emoji_id')->references('id')->on('emoji');
+
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
