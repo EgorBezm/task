@@ -11,7 +11,7 @@ class Emoji extends Model
 
     public function groups()
     {
-        return $this->hasMany(Groups::class);
+        return $this->hasMany(Workspace::class);
     }
 
     public function users()

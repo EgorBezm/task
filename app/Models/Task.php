@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tasks extends Model
+class Task extends Model
 {
     use HasFactory;
 
@@ -16,6 +16,6 @@ class Tasks extends Model
 
     public function group()
     {
-        return $this->belongsTo(Groups::class);
+        return $this->belongsTo(Workspace::class);
     }
 }

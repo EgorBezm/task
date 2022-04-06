@@ -11,6 +11,6 @@ class Status extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Task::class);
     }
 }

@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
-            $table->bigInteger('emoji_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
 
+            $table->bigInteger('emoji_id')->unsigned()->nullable();
+            $table->foreign('emoji_id')->references('id')->on('emoji');
+
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('users');
     }
 };

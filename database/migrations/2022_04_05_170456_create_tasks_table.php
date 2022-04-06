@@ -18,8 +18,12 @@ return new class extends Migration
 
             $table->string('header');
             $table->string('text');
+
             $table->bigInteger('status_id')->unsigned();
-            $table->bigInteger('group_id')->unsigned();
+            $table->foreign('status_id')->references('id')->on('statuses');
+
+            $table->bigInteger('workspace_id')->unsigned();
+            $table->foreign('workspace_id')->references('id')->on('workspaces');
 
             $table->timestamps();
         });
