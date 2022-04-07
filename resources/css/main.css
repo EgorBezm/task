@@ -10,6 +10,14 @@
 body{
     font-family: 'DM Sans', sans-serif;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    text-decoration: none;
+    color: inherit;
+}
 
 /* SIDEBAR */
 
@@ -21,6 +29,7 @@ body{
     height: 100%;
 
     background: #F8F8F8;
+    border-right: 1px solid #E1E3E6;
 }
 .sidebar__container{
     padding: 14px 28px 0 28px;
@@ -53,6 +62,7 @@ body{
 }
 .item-workspace{
     margin: 12px 0 0 0;
+    cursor: pointer;
 }
 .item-workspace_active{
     background: #FFFFFF;
@@ -75,6 +85,40 @@ body{
     line-height: 24px;
 
     color: #757D8A;
+}
+.sign-out{
+    position: absolute;
+    bottom: 43px;
+    left: 39px;
+}
+.sign-out__link{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.sign-out__img{
+    padding: 0 13px 0 0;
+}
+.sign-out__text{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #757D8A;
+}
+.add-workspace{
+    display: flex;
+    align-items: center;
+    margin: 16px 0 0 0;
+    cursor: pointer;
+}
+.add-workspace__icon{
+    margin: 0 10px 0 0;
+}
+.add-workspace__text{
+    color: #4E73F8;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 /* END SIDEBAR */
@@ -111,6 +155,9 @@ body{
 .content{
     margin: 102px 0 0 348px;
 }
+
+/* NOT AUTHORIZATION PAGE */
+
 .login,
 .register
 {
@@ -149,6 +196,9 @@ body{
 
 .hystmodal__styled{
     padding: 56px 24px 27px 24px;
+}
+.hystmodal__styled-workspace{
+    padding: 38px 26px 0 26px;
 }
 .modal__close{
     position: absolute;
@@ -243,6 +293,30 @@ body{
 
     color: rgba(117, 125, 138, 0.4);
 }
+.input{
+    width: 100%;
+    height: 26px;
+    padding: 0 0 0 5px;
+
+    border-width: 0 0 0 2px;
+    border-color: #4E73F8;;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #404D61;
+}
+.input:focus-visible{
+    outline: none;
+}
+.input::placeholder{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: rgba(117, 125, 138, 0.4);
+}
 .formsubmit{
     margin: 36px 0 0 0;
 }
@@ -331,7 +405,8 @@ body{
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #757D8A;
+    color: #4E73F8;
+    text-decoration-line: underline;
 }
 .formsubmit .button{
     width: 100%;
@@ -351,6 +426,229 @@ body{
 
 
 /* END MODALS WINDOWS */
+
+/* END NOT AUTHORIZATION PAGE */
+
+/* MAIN PAGE */
+
+.main-page{
+    margin: 34px 0 0 0;
+}
+.cards{
+    display: flex;
+}
+.column{
+    padding: 0 25px 0 0;
+    min-width: 448px;
+    max-width: 448px;
+}
+.column__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__name{
+    padding: 5px 13px;
+    border-radius: 8px;
+    border: none;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    cursor: pointer;
+}
+.header__name_todo{
+    background: rgba(244, 60, 60, 0.08);
+    color: #F43C3C;
+}
+.header__name_doing{
+    background: rgba(78, 115, 248, 0.08);
+    color: #4E73F8;
+}
+.header__name_done{
+    background: rgba(7, 162, 135, 0.08);
+    color: #07A287;
+}
+.header__counter{
+    background: #C3C7CE;
+    border-radius: 8px;
+    border: none;
+    padding: 2px 8px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.new-task{
+    margin: 20px 0 0 0;
+    width: 100%;
+    height: 40px;
+
+    background: #F8F8F8;
+    border: 1px solid #E1E3E6;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tasks{
+    margin: 20px 0 0 0;
+}
+.task{
+    padding: 16px;
+    margin: 0 0 20px 0;
+
+    background: #FFFFFF;
+    border: 1px solid #E1E3E6;
+    box-sizing: border-box;
+
+    box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.task__header{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #404D61;
+}
+.task__text{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757D8A;
+}
+.task__menu{
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    cursor: pointer;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+    background: #F8F8F8;
+    box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
+    border-radius: 8px;
+    border: none;
+}
+.dropdown-content img{
+    padding: 5px;
+    margin: 2px 9px;
+    cursor: pointer;
+}
+.task__right:hover .dropdown-content{
+    display: flex;
+    flex-direction: column;
+}
+
+/* MODALS WINDOWS */
+.formitem_task-title{
+    margin: 0 0 48px 0;
+}
+.formitem_task-title input{
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    height: 40px;
+}
+.formitem_task-title input::placeholder{
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    height: 40px;
+
+    color: rgba(117, 125, 138, 0.4);
+}
+.formitem_task-description textarea{
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 27px;
+    padding: 0 0 0 5px;
+    margin: 0 0 100px 0;
+
+    border-width: 0 0 0 2px;
+    border-color: #4E73F8;;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #404D61;
+}
+.formitem_task-description textarea::placeholder{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: rgba(117, 125, 138, 0.4);
+}
+.hystmodal__window_task{
+    min-height: 600px;
+}
+.formsubmit-task{
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+}
+.btn{
+    background: rgba(7, 162, 135, 0.08);
+    border-radius: 8px;
+    border: none;
+
+    padding: 10px;
+    color: #07A287;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    cursor: pointer;
+}
+.form__top{
+    display: flex;
+    align-items: center;
+}
+.form-top__for-emoji{
+
+}
+.form-top__input{
+    flex: 1;
+    margin: 0 26px;
+}
+.form__bottom{
+    margin: 24px 0 0 0;
+}
+.form-bottom__header{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #757D8A;
+}
+.form-bottom__body{
+    display: flex;
+    flex-wrap: wrap;
+}
+.select-emoji{
+    width: 54px;
+    height: 54px;
+    margin: 12px;
+    cursor: pointer;
+}
+
+/* END MODALS WINDOWS */
+
+/* END MAIN PAGE */
 
 /* END CONTENT */
 

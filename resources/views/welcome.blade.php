@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
-@section('contentAuthorized')
-
-@stop
-
-@section('contentNotAuthorized')
+@section('content')
     <div class="welcome-page">
         <div class="register">
             <div class="welcome-page__emoji">
@@ -30,7 +26,7 @@
     <div class="hystmodal hystmodal--simple" id="modalReg" aria-hidden="true">
         <div class="hystmodal__wrap">
             <div class="hystmodal__window hystmodal__window--form" role="dialog" aria-modal="true">
-                <button class="modal__close" style="background-image: url('{{ asset('images/close.png') }}');" data-hystclose>Закрыть</button>
+                <button class="modal__close" style="background-image: url('{{ asset('images/icons/close.png') }}');" data-hystclose>Закрыть</button>
                 <div class="hystmodal__styled">
                     <div class="loginblock__buttons">
                         <button class="button-to-login" data-hystmodal="#modalLog">Login</button>
@@ -68,7 +64,7 @@
     <div class="hystmodal hystmodal--simple" id="modalLog" aria-hidden="true">
         <div class="hystmodal__wrap">
             <div class="hystmodal__window hystmodal__window--form" role="dialog" aria-modal="true">
-                <button class="modal__close" style="background-image: url('{{ asset('images/close.png') }}');" data-hystclose>Закрыть</button>
+                <button class="modal__close" style="background-image: url('{{ asset('images/icons/close.png') }}');" data-hystclose>Закрыть</button>
                 <div class="hystmodal__styled">
                     <div class="loginblock__buttons">
                         <button class="button-to-login" disabled>Login</button>
@@ -89,7 +85,7 @@
                                 <input type="checkbox" name="remember" tabindex="0">
                                 <span class="flexi"><i class="checkplace"><img src="https://addmorescripts.github.io/hystModal/img/check.svg" alt=""></i>Remember me</span>
                             </label>
-                            <a class="loginblock__link" data-hystmodal="#modalReset">Forget Password</a>
+                            <a class="loginblock__link" data-hystmodal="#modalReset">Forgot Password</a>
                         </div>
                         <div class="formsubmit">
                             <button type="submit" class="button" onclick="alert('All is OK.'); return false;">Login</button>
@@ -105,7 +101,7 @@
     <div class="hystmodal hystmodal--simple" id="modalReset" aria-hidden="true">
         <div class="hystmodal__wrap">
             <div class="hystmodal__window hystmodal__window--form" role="dialog" aria-modal="true">
-                <button class="modal__close" style="background-image: url('{{ asset('images/close.png') }}');" data-hystclose>Закрыть</button>
+                <button class="modal__close" style="background-image: url('{{ asset('images/icons/close.png') }}');" data-hystclose>Закрыть</button>
                 <div class="hystmodal__styled">
                     <div class="loginblock__h1 reset-h1">Reset Password</div>
                     <form action="#" method="POST">

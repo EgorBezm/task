@@ -16,7 +16,7 @@
 
 <div class="content">
     @include('layouts.header')
-    @yield('contentNotAuthorized')
+    @yield('content')
 </div>
 
 <script src="{{ asset('js/hystmodal.min.js') }}"></script>
