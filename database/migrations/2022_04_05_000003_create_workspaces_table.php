@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('name');
 
-            $table->bigInteger('emoji_id')->unsigned();
+            $table->bigInteger('emoji_id')->unsigned()->nullable();
             $table->foreign('emoji_id')->references('id')->on('emoji');
 
             $table->bigInteger('user_id')->unsigned();

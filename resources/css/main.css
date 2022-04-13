@@ -40,6 +40,7 @@ a:hover{
 }
 .account__emoji{
     padding: 0 12px 0 0;
+    cursor: pointer;
 }
 .account__label{
     font-weight: 700;
@@ -50,6 +51,10 @@ a:hover{
 }
 .workspace{
     padding: 38px 0 0 0;
+}
+.workspace__list{
+    height: calc(100vh - 259px);
+    overflow-y: auto;
 }
 .workspace__label{
     font-weight: 400;
@@ -149,6 +154,22 @@ a:hover{
 
     padding: 20px 0 0 0;
 }
+.title_authorized:hover .dropdown-workspace{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s, visibility .3s;
+}
+.dropdown-workspace{
+    margin: 0 0 0 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility 0s .3s;
+}
+.dropdown-workspace img{
+    padding: 3px;
+    margin: 0 5px;
+    cursor: pointer;
+}
 
 /* END HEADER */
 
@@ -183,13 +204,49 @@ a:hover{
 .register__link,
 .login__link
 {
-    cursor: pointer;
+    border: none;
+    background: none;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    padding: 3px;
+    margin: 0 3px;
+}
+.register__link:hover,
+.login__link:hover
+{
+    border-bottom: solid 1px;
+}
+.register__link:target,
+.login__link:target
+{
+    border: solid 1px;
+}
+.register__link:focus-visible,
+.login__link:focus-visible
+{
+    outline: solid 1px;
 }
 .register__link{
     color: #07A287;
+    border-color: #07A287;
+    outline-color: #07A287;
 }
 .login__link{
     color: #FFA11D;
+    border-color: #FFA11D;
+    outline-color: #FFA11D;
+}
+.loginblock__error{
+    display: none;
+    background-color: #ffdee0;
+    padding: 10px;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #404D61;
 }
 
 /* MODALS WINDOWS */
@@ -226,9 +283,7 @@ a:hover{
     display: flex;
     align-items: center;
 }
-.button-to-login,
-.button-to-registration
-{
+.btn-2{
     padding: 10px;
 
     box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
@@ -241,15 +296,23 @@ a:hover{
     line-height: 24px;
 
     cursor: pointer;
+
+    background: rgba(7, 162, 135, 0.08);
+    color: #07A287;
 }
-.button-to-login{
+.btn-2:disabled{
     background: rgba(117, 125, 138, 0.08);
     color: #757D8A;
-    margin: 0 10px 0 0;
 }
-.button-to-registration{
-    background: rgba(255, 161, 29, 0.08);
-    color: #FFA11D;
+.btn-2:hover{
+    background: rgba(7, 162, 135, 0.12);
+    color: #069e84;
+}
+.btn-2:focus-visible{
+    outline: solid 1px #078a73;
+}
+.btn-login{
+    margin: 0 10px 0 0;
 }
 .loginblock__h1{
     margin: 36px 0 15px 0;
@@ -320,7 +383,7 @@ a:hover{
 .formsubmit{
     margin: 36px 0 0 0;
 }
-.formsubmit button{
+.btn{
     width: 100%;
 
     font-weight: 400;
@@ -332,9 +395,15 @@ a:hover{
     background: rgba(7, 162, 135, 0.08);
     box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
     border-radius: 8px;
-    border: none;
+    border: 1px solid #07A287;
 
     cursor: pointer;
+}
+.btn:hover{
+    background: rgba(7, 162, 135, 0.15);
+}
+.btn:focus-visible{
+    outline: 2px solid #078a73;
 }
 .flexi {
     display: flex;
@@ -408,7 +477,7 @@ a:hover{
     color: #4E73F8;
     text-decoration-line: underline;
 }
-.formsubmit .button{
+.formsubmit .btn{
     width: 100%;
     height: 56px;
     font-weight: 500;
@@ -538,6 +607,7 @@ a:hover{
 .dropdown-content {
     display: none;
     position: absolute;
+    z-index: 1;
 
     background: #F8F8F8;
     box-shadow: 0px 4px 2px -2px rgba(27, 46, 94, 0.02);
@@ -553,6 +623,34 @@ a:hover{
     display: flex;
     flex-direction: column;
 }
+.dropdown-emoji-user{
+    visibility: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 0;
+    max-width: 213px;
+    background: #fff;
+    box-shadow: 0px 4px 2px -2px rgb(27 46 94 / 2%);
+    border-radius: 8px;
+    border: none;
+    cursor: auto;
+}
+.account__emoji.active .dropdown-emoji-user{
+    visibility: visible;
+}
+.select-emoji-user{
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    cursor: pointer;
+}
+.menu{
+    display: none;
+}
+.bg{
+    display: none;
+}
 
 /* MODALS WINDOWS */
 .formitem_task-title{
@@ -562,7 +660,7 @@ a:hover{
     font-weight: 400;
     font-size: 48px;
     line-height: 48px;
-    height: 40px;
+    height: 56px;
 }
 .formitem_task-title input::placeholder{
     font-weight: 400;
@@ -575,7 +673,7 @@ a:hover{
 .formitem_task-description textarea{
     max-width: 100%;
     min-width: 100%;
-    min-height: 27px;
+    min-height: 300px;
     padding: 0 0 0 5px;
     margin: 0 0 100px 0;
 
@@ -603,7 +701,7 @@ a:hover{
     bottom: 24px;
     right: 24px;
 }
-.btn{
+.button{
     background: rgba(7, 162, 135, 0.08);
     border-radius: 8px;
     border: none;
@@ -620,7 +718,7 @@ a:hover{
     align-items: center;
 }
 .form-top__for-emoji{
-
+    cursor: pointer;
 }
 .form-top__input{
     flex: 1;
@@ -651,5 +749,79 @@ a:hover{
 /* END MAIN PAGE */
 
 /* END CONTENT */
+
+@media (max-width: 1000px) {
+    .sidebar{
+        left: -320px;
+        transition: all 1s;
+    }
+    .content{
+        margin: 30px 0 0 30px;
+    }
+    .header{
+        position: fixed;
+        top: 30px;
+        left: 0;
+        width: 100%;
+    }
+    .title{
+        justify-content: center;
+    }
+    .subtitle{
+        text-align: center;
+    }
+    .welcome-page,
+    .main-page{
+        margin: 150px 0 0 0;
+    }
+    .dropdown-workspace{
+        opacity: 1;
+        visibility: visible;
+    }
+    .task__menu{
+        display: none;
+    }
+    .dropdown-content{
+        display: block;
+        position: inherit;
+        background: none;
+    }
+    .menu{
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 0;
+        padding: 10px;
+        opacity: 0.7;
+    }
+    .sidebar_open{
+        left: 0;
+        transition: all 1s;
+    }
+    .bg{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0;
+        transition: all 1s;
+        display: block;
+        visibility: hidden;
+    }
+    .bg_open{
+        visibility: visible;
+        opacity: .5;
+        transition: all 1s;
+    }
+}
+
+@media (max-width: 700px) {
+    .column{
+        min-width: 350px;
+        max-width: 350px;
+    }
+}
 
 

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Emoji::class);
     }
+
+    public function workspaces()
+    {
+        return $this->hasMany(Workspace::class);
+    }
 }

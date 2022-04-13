@@ -14,7 +14,7 @@ class Task extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public function group()
+    public function workspace()
     {
         return $this->belongsTo(Workspace::class);
     }

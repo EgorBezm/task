@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MainController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', [MainController::class, 'main'])->name('home');
 
-Auth::routes();
+Route::get('authorization', [MainController::class, 'authorization'])->name('authorization');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('logout', [MainController::class, 'logout'])->name('logout');
+
+//Auth::routes();
+
+
+
