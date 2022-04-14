@@ -17,4 +17,14 @@ class Workspace extends Model
     {
         return $this->belongsTo(Emoji::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
