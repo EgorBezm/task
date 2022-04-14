@@ -4,31 +4,7 @@ const myModal = new HystModal({
     backscroll: true,
 });
 
-const buffer = (function (){
-    const q = [];
-
-    return function (item){
-        if (q.includes(item)){
-            return true;
-        }
-
-        q.push(item)
-        return false;
-    }
-})()
-
-const tasksBuffer = (function (){
-    const q = [];
-
-    return function (item, response = null){
-        if (q[item] !== undefined){
-            return q[item];
-        }
-
-        q[item] = response
-        return false;
-    }
-})()
+const buffer = [];
 
 $(document).ready(function() {
     getTasks();
@@ -63,10 +39,11 @@ $('body').on('click', '#change', function (){
 
 $('body').on('click', '.item-workspace', function () {
     if (! $(this).hasClass("item-workspace_active") &&  ! $(this).hasClass("add-workspace")) {
+        toBuffer($('.item-workspace_active').attr('data-id'))
         $('.item-workspace_active').removeClass('item-workspace_active');
         $(this).addClass('item-workspace_active');
         $('.header__counter').text('0');
-        getTasks();
+        tasksBuffer($(this).attr('data-id'));
     }
 })
 
@@ -345,12 +322,12 @@ function getTasks() {
     $('.title__emoji').children('img').attr(
         'src', icons
     )
-    if ( buffer( $('.item-workspace_active').attr('data-id') ) )
-    {
-        $('.tasks').html('');
-        drawTask(tasksBuffer( $('.item-workspace_active').attr('data-id') ))
-    }
-    else{
+    // if ( buffer( $('.item-workspace_active').attr('data-id') ) )
+    // {
+    //     $('.tasks').html('');
+    //     drawTask(tasksBuffer( $('.item-workspace_active').attr('data-id') ))
+    // }
+    // else{
         $.ajax({
             url: window.location.href + 'api/tasks',
             type: 'post',
@@ -361,12 +338,12 @@ function getTasks() {
         }).done(function( response )
         {
             if (response !== "error") {
-                tasksBuffer( $('.item-workspace_active').attr('data-id'), response )
+                //tasksBuffer( $('.item-workspace_active').attr('data-id'), response )
                 $('.tasks').html('');
                 drawTask(response);
             }
         });
-    }
+    // }
 
 
 }
@@ -436,6 +413,44 @@ $(".column").droppable({drop:function(event,ui){
         });
     }
 }});
+
+function tasksBuffer(workspace_id) {
+    if ( buffer[workspace_id] !== undefined ) {
+        $('.tasks').html('');
+        drawTask(buffer[workspace_id]);
+    }
+    else {
+        getTasks();
+    }
+}
+
+function toBuffer() {
+    let arr = [];
+    let workspace_id = $('.item-workspace_active').attr('data-id');
+
+    $('.cards').children().each(function() {
+        let status_id = $(this).attr('data-id');
+
+        $(this).find('.tasks').each(function() {
+            let id = $(this).attr('data-status-id');
+
+            $(this).children().each(function() {
+                let header = $(this).find('.task__header').text();
+                let text = $(this).find('.task__text').text();
+                let task = {
+                    id: id,
+                    status_id: status_id,
+                    workspace_id: workspace_id,
+                    header: header,
+                    text: text
+                }
+                arr.push(task);
+            })
+        })
+    });
+
+    buffer[workspace_id] = arr;
+}
 
 
 
