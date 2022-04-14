@@ -4,6 +4,32 @@ const myModal = new HystModal({
     backscroll: true,
 });
 
+const buffer = (function (){
+    const q = [];
+
+    return function (item){
+        if (q.includes(item)){
+            return true;
+        }
+
+        q.push(item)
+        return false;
+    }
+})()
+
+const tasksBuffer = (function (){
+    const q = [];
+
+    return function (item, response = null){
+        if (q[item] !== undefined){
+            return q[item];
+        }
+
+        q[item] = response
+        return false;
+    }
+})()
+
 $(document).ready(function() {
     getTasks();
     if (! $('.title_authorized').length)
@@ -319,21 +345,30 @@ function getTasks() {
     $('.title__emoji').children('img').attr(
         'src', icons
     )
-
-    $.ajax({
-        url: window.location.href + 'api/tasks',
-        type: 'post',
-        data: {
-            'workspace':$('.item-workspace_active').attr('data-id'),
-        }
-
-    }).done(function( response )
+    if ( buffer( $('.item-workspace_active').attr('data-id') ) )
     {
-        if (response !== "error") {
-            $('.tasks').html('');
-            drawTask(response);
-        }
-    });
+        $('.tasks').html('');
+        drawTask(tasksBuffer( $('.item-workspace_active').attr('data-id') ))
+    }
+    else{
+        $.ajax({
+            url: window.location.href + 'api/tasks',
+            type: 'post',
+            data: {
+                'workspace':$('.item-workspace_active').attr('data-id'),
+            }
+
+        }).done(function( response )
+        {
+            if (response !== "error") {
+                tasksBuffer( $('.item-workspace_active').attr('data-id'), response )
+                $('.tasks').html('');
+                drawTask(response);
+            }
+        });
+    }
+
+
 }
 
 function drawTask(response) {

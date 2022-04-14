@@ -9,32 +9,29 @@ use App\Models\User;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
 
 class MainController extends Controller
 {
 
     public function main()
     {
-        if (Auth::check())
+        if (!Auth::check())
         {
-            $users = new User();
-            $workspaces = new Workspace();
-            $tasks = new Task();
-            $statuses = new Status();
-            $emoji = new Emoji();
-
-            $user = $users->find(Auth::id());
-
-            return view('main', [
-                'user' => $user,
-                'workspaces' => $user->workspaces()->get(),
-                'statuses' => $statuses->all(),
-                'emojis' => $emoji->all(),
-            ]);
+            return view('welcome');
         }
 
-        return view('welcome');
+        $users = new User();
+        $statuses = new Status();
+        $emoji = new Emoji();
+
+        $user = $users->find(Auth::id());
+
+        return view('main', [
+            'user' => $user,
+            'workspaces' => $user->workspaces()->get(),
+            'statuses' => $statuses->all(),
+            'emojis' => $emoji->all(),
+        ]);
     }
 
     public function authorization(Request $request)
